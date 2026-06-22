@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "书签聚合搜索",
+  "version": "1.0.0",
+  "description": "快捷键弹出 Alfred 式书签搜索浮层，子串匹配标题与 URL。",
+  "permissions": ["bookmarks"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "toggle-search": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+K",
+        "mac": "Command+Shift+K"
+      },
+      "description": "打开/关闭书签搜索浮层"
+    }
+  }
+}
